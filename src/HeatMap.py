@@ -3,9 +3,7 @@ Created on Mar 20, 2018
 
 @author: abhishek
 '''
-import matplotlib
-matplotlib.use('agg')
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 import pandas as pd
 import os
 
@@ -21,12 +19,12 @@ def PlotHeatMap(path,ExFile):
         
     for sheet in read.sheet_names:
 
-        matrix = read.parse(sheet)
+        matrix = read.parse(sheet,header=None)
         plt.figure(i)
         plt.imshow(matrix.as_matrix(),cmap='hot',interpolation='nearest') #adjust the size to your needs
         #plt.show()
         plt.savefig(os.getcwd()+"/../Images/"+name+"/"+name+"_Kernel_"+str(i)+".jpg")
-        exit()    
-        plt.close()
+        #exit()    
+        #plt.close()
         i=i+1
     

@@ -11,10 +11,12 @@ import ListObjects
 import Classifiers as group
 import Write2Db as db
 import HeatMap as HM
+import ImagePreProcess as ipp
 
-path = os.getcwd()+"/../../TestPatterns/"
-path_heatMap = os.getcwd()+"/../../TestExPatterns/" 
-    
+#path = os.getcwd()+"/../../TestPatterns/"
+#path_heatMap = os.getcwd()+"/../../TestExPatterns/" 
+#path_image = os.getcwd()+"/../../../../Desktop"  
+path_image = os.getcwd()+"/../../../../" 
 def HeatMap():
     for ExFile in os.listdir(path_heatMap):
         
@@ -58,8 +60,11 @@ def main():
     if len(sys.argv) > 1 :
         if sys.argv[1] == "cluster":
             Cluster()
+        else:
+            HeatMap()
     else:
-        HeatMap()
+        ipp.PreProcess(path_image)
+        
     print "Check the Results"
 
 if __name__ == '__main__':
